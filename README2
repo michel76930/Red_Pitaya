@@ -1,0 +1,55 @@
+Mise en oeuvre de scilab.
+La version retenue (ici) pour linux-debian-9 est la suivante :
+https://www.scilab.org/download/6.0.2
+Scilab 6.0.2 - Linux 64 bits, (scilab-6.0.2.bin.linux-x86_64.tar.gz - 238M) (gz)
+décompresser dans /home/user/documents/scilab/
+rem : ce logiciel fonctionne directement sans installation.
+pour le démarrer il est possible de créer un commande dans le menu "Applications" ou à partir de :
+/home/user/documents/scilab/bin/scilab
+(en tenant compte de votre installation personnelle)
+-------------
+Pour un bon fonctionnement de scilab et de redpitaya il convient d'installer un module contenant 
+les commandes SCPI propres au RedPitaya.
+ainsi, dans console scilab
+    - choisir le menu Applications
+      - puis Gestionnaires de Modules - ATOMS
+        - puis Tous les modules
+          - choisir : socket 2.0.3 (basics socket fonctions for scilab - SCI/Control/socket_tookox/2.0.3)
+            - Installer
+            (rem : constater que le module est installer au démarrage dans la fenêtre de la console.
+            
+-------------
+Pour démarrer l'appli-RedPitaya, 
+il faut au préalable charger le fichier appli_scilab_redpitaya.sce dans SciNotes.
+rem : la fenêtre SciNotes sera ouverte à l'aide de l'icône N°1 sur la ligne du menu de la console scilab.
+(ce fichier est disponible à l'adresse suivante :
+https://redpitaya.readthedocs.io/en/latest/appsFeatures/examples/acqRF-exm1.html#code-scilab
+choisir ...... 2.4.4.4.1.7. Code - Scilab  dans la page
+et recopier le script dans SciNotes, après lui avoir attribuer un nom (appli_scilab_redpitaya.sce)
+(rem : que j'ai personnellement enregistré dans un répertoire "exercices" dans "scilab")
+voir modifications)
+Ces modifications à apporter (car cela dépend de votre installation) sont les suivantes :
+1 - ligne 6 : la commande exec doit contenir l'adresse du fichier loader.sce (celui de socket 2.0.3 
+(attention la version 2.0.2 est défectueuse)
+2 - ligne 10 : contient l'IP de votre redpitaya (voir ci-dessous) en général 192.168.1.100
+3 - ligne 11 : le numéro du port en général 5000 (voir ci-dessous)
+---------------------
+Ces informations sont disponibles après avoir démarrer la liaison vers la Redpitaya à l'aide du navigateur.
+lire la page :
+https://redpitaya.readthedocs.io/en/latest/appsFeatures/remoteControl/remoteControl.html#examples
+l'adresse à donner au navigateur est 192.168.1.100 (entrée)
+Une nouvelle page est ouverte qui provient de votre Redpitaya
+  - choisir l'icône "Development", puis
+    -l'icône "SCPI server"
+      -puis RUN
+        - lire l'adressage dans l'encadré rouge dans l'image qui suit,
+        (rem : une lecture fine des informations est primordiale)
+        
+--------------------
+Alors seulement vous pouvez lancer l'application sur scilab:
+  1 - cliquer dans la fenêtre SciNotes, en fin de page par exemple.
+  2 - faire Ctrl-L afin de lancer l'application....et alors :
+  3 - miracle un écran du type analyseur de spectre s'affiche.
+  4 - bravo à vous !
+  
+  à suivre.
